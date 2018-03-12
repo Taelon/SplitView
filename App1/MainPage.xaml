@@ -8,6 +8,36 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="Large1280">
+                <VisualState x:Name="Large1">
+                    <VisualState.Setters>
+                        <Setter Target="MySplitView.(SplitView.DisplayMode)" Value="Inline"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1280"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="Med1024">
+                    <VisualState.Setters>
+                        <Setter Target="MySplitView.(SplitView.DisplayMode)" Value="CompactOverlay"/>
+                        <Setter Target="MySplitView.(SplitView.IsPaneOpen)" Value="False"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1024"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="Small320">
+                    <VisualState.Setters>
+                        <Setter Target="MySplitView.(SplitView.DisplayMode)" Value="CompactOverlay"/>
+                        <Setter Target="MySplitView.(SplitView.IsPaneOpen)" Value="False"/>
+                    </VisualState.Setters>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="320"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <SplitView x:Name="MySplitView" DisplayMode="CompactInline" IsPaneOpen="True">
             <SplitView.Pane>
                 <StackPanel Margin="0,30,0,0">
@@ -25,10 +55,8 @@
                     </RadioButton>
                 </StackPanel>
             </SplitView.Pane>
-            <SplitView.Content>
-                <Frame x:Name="MainFrame"/>
-            </SplitView.Content>
+            <Frame x:Name="MainFrame"/>
         </SplitView>
-        <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="{Binding ElementName=MySplitView, Path=CompactPaneLength }" VerticalAlignment="Top" Click="HamburgerButton_Click" />
+        <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="{Binding CompactPaneLength, ElementName=MySplitView}" VerticalAlignment="Top" Click="HamburgerButton_Click" />
     </Grid>
 </Page>
