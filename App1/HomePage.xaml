@@ -8,7 +8,42 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="392,322,0,0" TextWrapping="Wrap" Text="There is no place like 127.0.0.1" VerticalAlignment="Top" FontSize="32"/>
 
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="OfflineState">
+                    <VisualState.StateTriggers>
+                        <local:NetworkConnectionTrigger RequiresInternet="False" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="StatusText.Text" Value="You are currently offline" />
+                        <Setter Target="StatusIcon.Fill" Value="Red" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="ConnectedState">
+                    <VisualState.StateTriggers>
+                        <local:NetworkConnectionTrigger RequiresInternet="True" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="StatusText.Text" Value="You are currently online" />
+                        <Setter Target="StatusIcon.Fill" Value="Green" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="405,295,0,0" TextWrapping="Wrap" Text="There is no place like 127.0.0.1" VerticalAlignment="Top" FontSize="32"/>
+        <StackPanel Orientation="Horizontal" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center">
+            <Rectangle x:Name="StatusIcon" 
+                Fill="Orange" 
+                Height="15" Width="15" 
+                VerticalAlignment="Center" 
+                Margin="10" />
+            <TextBlock x:Name="StatusText" 
+                Text="your online status is.." 
+                FontSize="24" FontWeight="Light" />
+        </StackPanel>
     </Grid>
 </Page>

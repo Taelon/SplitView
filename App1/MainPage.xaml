@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="Large1280">
+            <VisualStateGroup x:Name="States">
                 <VisualState x:Name="Large1">
                     <VisualState.Setters>
                         <Setter Target="MySplitView.(SplitView.DisplayMode)" Value="Inline"/>
