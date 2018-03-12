@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="SplitView.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SplitView"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <SplitView x:Name="MySplitView" DisplayMode="CompactInline" IsPaneOpen="True">
+            <SplitView.Pane>
+                <StackPanel Margin="0,30,0,0">
+                    <RadioButton Tag="Home" Click="RadioButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Home"/>
+                            <TextBlock Text="Home" Margin="15,0,0,0" />
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton Tag="Gallery" Click="RadioButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="BrowsePhotos"/>
+                            <TextBlock Text="Gallery" Margin="15,0,0,0" />
+                        </StackPanel>
+                    </RadioButton>
+                </StackPanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Frame x:Name="MainFrame"/>
+            </SplitView.Content>
+        </SplitView>
+        <Button x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Content="&#xE700;" Width="{Binding ElementName=MySplitView, Path=CompactPaneLength }" VerticalAlignment="Top" Click="HamburgerButton_Click" />
+    </Grid>
+</Page>
